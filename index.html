@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <script src="scripts/calculation.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+	<div class="logo-container">
+        <a href="http://www.1kingetc.com/" target="_blank">
+            <img src="images/title.png" alt="绍兴伊肯环境科技有限公司" class="company-logo">
+        </a>
+    </div>
+	<div class="main">
+		<div class="header" >
+			<h1><span class="brand-name">绍兴伊肯</span>冷却塔选型系统</h1>
+		</div>
+		<p></p>
+		<form id="form">
+            <ul class="left-form">
+                <h2>冷却塔选型参数</h2>
+                
+                <li>
+                    <div class="form-group">
+                        <label for="QwlpmX">水流量(m³/h)</label>
+                        <input type="number" id="QwlpmX" placeholder="例如：45" min="27" required step="0.1">
+                        <span class="range-info">最小值: 27 m³/h</span>
+                    </div>
+                </li> 
+                
+                <li>
+                    <div class="form-group">
+                        <label for="TwinCX">进水温度(°C)</label>
+                        <input type="number" id="TwinCX" placeholder="例如：44" min="30" max="55" required step="0.1">
+                        <span class="range-info">范围: 30°C - 55°C</span>
+                    </div>
+                </li> 
+                
+                <li>
+                    <div class="form-group">
+                        <label for="TwoutCX">出水温度(°C)</label>
+                        <input type="number" id="TwoutCX" placeholder="例如：36" required step="0.1">
+                        <span class="range-info">通常低于进水温度 5-15°C</span>
+                    </div>
+                </li> 
+                
+                <li>
+                    <div class="form-group">
+                        <label for="TwbCX">湿球温度(°C)</label>
+                        <input type="number" id="TwbCX" placeholder="例如：29" min="24" max="31" required step="0.1">
+                        <span class="range-info">范围: 24°C - 31°C</span>
+                    </div>
+                </li>
+                
+                <input type="submit" class="submit-btn" value="提交选型参数">
+            </ul>
+            
+            <ul class="right-form">
+                <h2>冷却塔选型结果</h2>
+                <li>
+                    <div id="result">
+                        <p style="text-align: center; color: #7f8c8d; padding: 50px 0;"><br>等待计算结果...<br>
+                            系统将显示详细的选型结果
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </form>
+        
+        <div class="copy-right">
+            <p>Copyright © <a href="http://www.1kingetc.com/" target="_blank" title="版权所有">绍兴伊肯环境科技有限公司</a> 版权所有</p> 
+        </div>
+			
+		</div>
+
+	
+</body>
+</html>
