@@ -28,12 +28,14 @@ body{
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .main{
-    margin: 7em auto 0;
-    width: 80%;
+    margin: 6em auto 0;
+    width: 90%;
+    max-width: 1200px;
     background: rgba(245, 244, 244, 0.5); /* 最后一个参数是透明度 0-1 */
     backdrop-filter: blur(10px); 
     border-radius: 15px; /* 圆角 */
     padding: 20px;
+    box-sizing: border-box;
 }
 .header {
 	text-align:center;
@@ -183,10 +185,15 @@ form {
 }
 
 .logo-container {
-	position: absolute;
-	top: 20px;
-	left: 20px;
+	position: fixed;
+	top: 10px;
+	left: 10px;
 	z-index: 1000;
+}
+
+.logo-container img {
+	max-width: 60px;
+	height: auto;
 }
 
 .range-info {
@@ -196,13 +203,14 @@ form {
 }
 
 input[type="number"], select {
-	width: 60%;
+	width: 100%;
 	padding: 12px;
 	border: 2px solid #e0e0e0;
 	border-radius: 6px;
 	font-size: 14px;
 	transition: all 0.3s;
 	background: white;
+	box-sizing: border-box;
 }
 
 input[type="number"]:focus, select:focus {
@@ -378,8 +386,6 @@ input[type=checkbox].css-checkbox10:checked + label i.css-label10 {
 	text-align: center;
 	padding: 20px;
 	margin-top: 30px;
-	background: rgba(255, 255, 255, 0.9);
-	border-radius: 10px;
 	color: #2c3e50;
 }
 
@@ -399,15 +405,33 @@ input[type=checkbox].css-checkbox10:checked + label i.css-label10 {
 	
 	.main {
 		padding: 15px;
+		margin: 5em auto 0;
+		width: 95%;
 	}
 	
 	.left-form, .right-form {
 		padding: 15px;
+		width: 100%;
+		flex: 1 1 100%;
+		margin: 10px 0;
 	}
 	
 	.header h1 {
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
+	
+	.header {
+		padding: 0.8em;
+	}
+	
+	input[type="number"], select {
+		width: 100%;
+	}
+	
+	.submit-btn {
+		width: 100%;
+	}
+}
 .copy-right p a {
 	font-size:1em;
 	font-weight:600;
@@ -426,28 +450,28 @@ input[type=checkbox].css-checkbox10:checked + label i.css-label10 {
 @media only screen and (max-width:1680px) and (min-width:1440px) {
 	.main{
 	width:70%;
-	margin:6em auto 0;
+	margin:5em auto 0;
 	}
 	.copy-right p {
-		margin: 3.5em 0em;
+		margin: 2em 0em;
 	}
 }
 @media only screen and (max-width:1440px) and (min-width:1366px) {
 	.main{
 	width:80%;
-	margin:6em auto 0;
+	margin:5em auto 0;
 	}
 	.copy-right p {
-	margin: 3.8em 0em;
+	margin: 2em 0em;
 	}
 }
 @media only screen and (max-width:1366px) and (min-width:1280px) {
 	.main{
 	width:82%;
-	margin:6em auto 0;
+	margin:5em auto 0;
 	}
 	.copy-right p {
-	margin: 4em 0em;
+	margin: 2em 0em;
 	}
 }
 @media only screen and (max-width:1280px) and (min-width:1024px) {
@@ -456,24 +480,24 @@ input[type=checkbox].css-checkbox10:checked + label i.css-label10 {
 	margin:5em auto 0;
 	}
 	.copy-right p {
-	margin: 3.5em 0em;
+	margin: 2em 0em;
 	}
 }
 @media only screen and (max-width:1024px) and (min-width:768px) {
 	.main{
 	width:97%;
-	margin:5em auto 0;
+	margin:4em auto 0;
 	}
 	.left-form input[type=text], .left-form input[type=email], .left-form input[type=password] {
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	width: 78%;
+	width: 100%;
 	}
 	.right-form input[type=text], input[type=password] {
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	width: 86%;
+	width: 100%;
 	}
 	.copy-right p {
-	margin: 3.5em 0em;
+	margin: 2em 0em;
 	}
 }
 @media only screen and (max-width:768px) and (min-width:640px) {
