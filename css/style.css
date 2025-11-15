@@ -447,279 +447,114 @@ input[type=checkbox].css-checkbox10:checked + label i.css-label10 {
 }
 /**//end-copy-right**/
 /*----start-responsive design-----*/
-@media only screen and (max-width:1680px) and (min-width:1440px) {
-	.main{
-	width:70%;
-	margin:5em auto 0;
+@media only screen and (max-width: 768px) {
+	.main {
+		padding: 15px;
+		margin: 4em auto 1em;
+		width: 95%;
 	}
+	
+	form {
+		flex-direction: column;
+		gap: 15px;
+	}
+	
+	.left-form, .right-form {
+		flex: 1 1 100%;
+		min-width: 100%;
+		padding: 15px;
+	}
+	
+	.header h1 {
+		font-size: 1.3rem;
+	}
+	
+	.main h2 {
+		font-size: 1.1rem;
+	}
+	
+	input[type="number"], select {
+		width: 100%;
+		font-size: 16px;
+	}
+	
+	.submit-btn {
+		width: 100%;
+	}
+	
 	.copy-right p {
-		margin: 2em 0em;
+		margin: 1.5em 0;
+		font-size: 0.9rem;
 	}
 }
-@media only screen and (max-width:1440px) and (min-width:1366px) {
-	.main{
-	width:80%;
-	margin:5em auto 0;
+
+@media only screen and (max-width: 480px) {
+	.main {
+		padding: 12px;
+		margin: 3.5em auto 1em;
+		width: 97%;
+		border-radius: 8px;
 	}
+	
+	.header {
+		padding: 0.6em;
+	}
+	
+	.header h1 {
+		font-size: 1.1rem;
+	}
+	
+	.main h2 {
+		font-size: 1rem;
+		margin: 10px 0;
+	}
+	
+	form {
+		gap: 10px;
+	}
+	
+	.left-form, .right-form {
+		padding: 12px;
+	}
+	
+	.form-group {
+		margin-bottom: 1rem;
+	}
+	
+	.form-group label {
+		font-size: 12px;
+		margin-bottom: 6px;
+	}
+	
+	input[type="number"], select {
+		width: 100%;
+		padding: 10px;
+		font-size: 16px;
+	}
+	
+	.submit-btn {
+		padding: 12px;
+		font-size: 14px;
+		margin-top: 10px;
+	}
+	
+	.range-info {
+		font-size: 0.75rem;
+	}
+	
+	.copy-right {
+		padding: 10px 0;
+		margin-top: 15px;
+	}
+	
 	.copy-right p {
-	margin: 2em 0em;
+		margin: 0.8em 0;
+		font-size: 0.8rem;
 	}
-}
-@media only screen and (max-width:1366px) and (min-width:1280px) {
-	.main{
-	width:82%;
-	margin:5em auto 0;
-	}
-	.copy-right p {
-	margin: 2em 0em;
-	}
-}
-@media only screen and (max-width:1280px) and (min-width:1024px) {
-	.main{
-	width:89%;
-	margin:5em auto 0;
-	}
-	.copy-right p {
-	margin: 2em 0em;
-	}
-}
-@media only screen and (max-width:1024px) and (min-width:768px) {
-	.main{
-	width:97%;
-	margin:4em auto 0;
-	}
-	.left-form input[type=text], .left-form input[type=email], .left-form input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	width: 100%;
-	}
-	.right-form input[type=text], input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	width: 100%;
-	}
-	.copy-right p {
-	margin: 2em 0em;
-	}
-}
-@media only screen and (max-width:768px) and (min-width:640px) {
-	.main{
-	width:95%;
-	margin:5em auto 0;
-	}
-	.left-form input[type=text], .left-form input[type=email], .left-form input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.7em 1em 0.7em 1em;
-	width: 70%;
-	}
-	.right-form input[type=text], input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.7em 1em 0.7em 0em;
-	width:89%;
-	}
-	.left-form{
-	width:88%;
-	text-align: center;
-	}
-	 .right-form {
-	 	float:none;
-	width:88%;
-	text-align: center;
-	}
-	.left-form > label {
-	margin-left:42px;
-	margin-top: 13px;
-	}
-	.main h2,.main h3{
-	text-align:center;
-	}
-	.left-form li{
-	margin-left:32px;
-	}
-	.right-form li{
-	margin-left:40px;
-	}
-	.left-form input[type=submit] {
-	padding: 12px 12px;
-	float: right;
-	margin: 2px 0px;
-	}
-	.main h4 {
-	float:left;
-	margin: 7px 36px;
-	}
-	.main h3{
-	margin-top:-2em;
-	}
-	.right-form input[type=submit] {
-	float: right;
-	padding: 8px 19px;
-	margin:2px 3px;
-	}
-	.copy-right p {
-	margin: 3.5em 0em;
-	}
-}	
-@media only screen and (max-width:640px) and (min-width:480px) {
-	.main{
-	width:95%;
-	margin:5em auto 0;
-	}
-	.left-form input[type=text], .left-form input[type=email], .left-form input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.7em 1em 0.7em 1em;
-	width: 70%;
-	}
-	.right-form input[type=text], input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.7em 1em 0.7em 0em;
-	width:89%;
-	}
-	.left-form{
-	width:88%;
-	text-align: center;
-	}
-	 .right-form {
-	 	float:none;
-	width:88%;
-	text-align: center;
-	}
-	.left-form > label {
-	margin-left:42px;
-	margin-top: 13px;
-	}
-	.main h2,.main h3{
-	text-align:center;
-	}
-	.left-form li{
-	margin-left:13px;
-	}
-	.right-form li{
-	margin-left:16px;
-	}
-	.left-form input[type=submit] {
-	padding: 12px 12px;
-	text-align:center;
-	float: none;
-	}
-	.main h4 {
-	float:left;
-	margin: 7px 17px;
-	}
-	.right-form input[type=submit] {
-	float: right;
-	padding: 8px 19px;
-	margin:2px 3px;
-	}
-	.copy-right p {
-		margin: 3.5em 0em;
-	}
-}
-@media only screen and (max-width:480px) and (min-width:320px) {
-	.main{
-	width:95%;
-	margin:2em auto 0;
-	}
-	.main p{
-	padding:16px 20px;
-	}
-	.left-form input[type=text], .left-form input[type=email], .left-form input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.7em 1em 0.7em 1em;
-	width: 70%;
-	}
-	.right-form input[type=text], input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.7em 2em 0.7em 0em;
-	width:89%;
-	}
-	.left-form, .right-form{
-	width:83%;
-	float:none;
-	text-align: center;
-	}
-	.left-form > label {
-	margin-left:10px;
-	margin-top: 13px;
-	}
-	.main h2,.main h3{
-	text-align:center;
-	}
-	.left-form li{
-	margin-left:13px;
-	}
-	.right-form li{
-	margin-left:16px;
-	}
-	.left-form input[type=submit] {
-	padding: 12px 12px;
-	text-align:center;
-	margin:9px 0px;
-	}
-	.main h4 {
-	float:left;
-	margin: 7px 17px;
-	}
-	.right-form input[type=submit] {
-	float: right;
-	padding: 8px 19px;
-	margin:2px 3px;
-	}
-	.copy-right p {
-	margin: 3em 0em;
-	}
-}	
-@media only screen and (max-width:320px) and (min-width:240px) {
-	.main{
-	width:96%;
-	margin:2em auto 0;
-	}
-	.main p{
-	padding:16px 17px;
-	}
-	.left-form input[type=text], .left-form input[type=email], .left-form input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.4em 1em 0.4em 1em;
-	width: 70%;
-	}
-	.right-form input[type=text], input[type=password] {
-	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 0.6em 0.9em 0.6em 0em;
-	width:89%;
-	}
-	.left-form, .right-form{
-	text-align: center;
-	}
-	.left-form > label {
-	margin-left:10px;
-	margin-top: 13px;
-	}
-	.main h2,.main h3{
-	text-align:center;
-	}
-	.left-form li{
-	margin-left:-6px;
-	}
-	.right-form li{
-	margin-left:-5px;
-	}
-	.left-form input[type=submit] {
-	padding: 12px 12px;
-	text-align:center;
-	margin:9px 0px;
-	}
-	.main h4 {
-	float:left;
-	margin: 7px 17px;
-	}
-	.right-form input[type=submit] {
-	float: right;
-	padding: 8px 19px;
-	margin:2px 3px;
-	}
-	.copy-right p {
-		margin:2.5em 0em;
-	}
-	.icon{
-	margin: 7px 5px 9px 0px;
+	
+	.logo-container {
+		top: 5px;
+		left: 5px;
 	}
 }
 /*----//end-responsive design-----*/
