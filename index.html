@@ -10,14 +10,27 @@
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 </head>
 <body>
-	<div class="logo-container">
+	<!-- <div class="logo-container">
         <a href="http://www.1kingetc.com/" target="_blank">
             <img src="images/title.png" alt="绍兴伊肯环境科技有限公司" class="company-logo">
         </a>
-    </div>
+    </div> -->
 	<div class="main">
 		<div class="header" >
-			<h1><span class="brand-name">绍兴伊肯</span>冷却塔选型系统</h1>
+			<img src="images/icon.png" alt="公司Logo" class="company-logo-header">
+			<div class="company-names">
+				<div class="company-group">
+                    <h1 class="chinese-name">绍兴伊肯环境科技有限公司</h1>
+                    <h1 class="english-name">SHAOXING 1KING ENVIRONMENT TECHNOLOGY CO., LTD</h1>
+				</div>
+				<div class="company-group">
+					<h1 class="chinese-name">（中外合资）绍兴伊肯冷却设备有限公司</h1>
+					<h1 class="english-name">SHAOXING 1KING COOLING EQUIPMENT CO., LTD</h1>
+				</div>
+			</div>
+			<div class="system-title">
+				<h1>冷却塔选型系统</h1>
+			</div>
 		</div>
 		<p></p>
 		<form id="form">
@@ -26,33 +39,41 @@
                 
                 <li>
                     <div class="form-group">
-                        <label for="QwlpmX">水流量(m³/h)</label>
+                        <div class="label-row">
+                            <label for="QwlpmX">水流量(m³/h)</label>
+                            <span class="range-info">最小值: 27 m³/h</span>
+                        </div>
                         <input type="number" id="QwlpmX" placeholder="例如：450" min="27" required step="0.1">
-                        <span class="range-info">最小值: 27 m³/h</span>
                     </div>
                 </li> 
                 
                 <li>
                     <div class="form-group">
-                        <label for="TwinCX">进水温度(°C)</label>
+                        <div class="label-row">
+                            <label for="TwinCX">进水温度(°C)</label>
+                            <span class="range-info">范围: 30°C - 55°C</span>
+                        </div>
                         <input type="number" id="TwinCX" placeholder="例如：44" min="30" max="55" required step="0.1">
-                        <span class="range-info">范围: 30°C - 55°C</span>
                     </div>
                 </li> 
                 
                 <li>
                     <div class="form-group">
-                        <label for="TwoutCX">出水温度(°C)</label>
+                        <div class="label-row">
+                            <label for="TwoutCX">出水温度(°C)</label>
+                            <span class="range-info">通常低于进水温度 5-15°C</span>
+                        </div>
                         <input type="number" id="TwoutCX" placeholder="例如：36" required step="0.1">
-                        <span class="range-info">通常低于进水温度 5-15°C</span>
                     </div>
                 </li> 
                 
                 <li>
                     <div class="form-group">
-                        <label for="TwbCX">湿球温度(°C)</label>
+                        <div class="label-row">
+                            <label for="TwbCX">湿球温度(°C)</label>
+                            <span class="range-info">范围: 24°C - 31°C</span>
+                        </div>
                         <input type="number" id="TwbCX" placeholder="例如：29" min="24" max="31" required step="0.1">
-                        <span class="range-info">范围: 24°C - 31°C</span>
                     </div>
                 </li>
                 
@@ -72,7 +93,12 @@
         </form>
         
         <div class="copy-right">
-            <p>Copyright © <a href="http://www.1kingetc.com/" target="_blank" title="版权所有">绍兴伊肯环境科技有限公司</a> 版权所有</p> 
+            <span class="copyright-line">Copyright ©</span>
+            <div class="company-names-right">
+                <p class="company-name-line"><a href="http://www.1kingetc.com/" target="_blank">绍兴伊肯环境科技有限公司</a></p> 
+                <p class="company-name-line"><a href="http://www.1kingetc.com/" target="_blank">（中外合资）绍兴伊肯冷却设备有限公司</a></p> 
+            </div>
+            <span class="copyright-right">版权所有</span>
         </div>
 			
 		</div>
