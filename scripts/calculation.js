@@ -13,23 +13,6 @@ const TwbCX = document.getElementById('TwbCX');
 if (rulesBtn) rulesBtn.addEventListener('click', () => rules.classList.add('show'));
 if (closeBtn) closeBtn.addEventListener('click', () => rules.classList.remove('show'));
 
-// RT data arrays - placeholder implementations
-var RTX = [];
-
-function LRTdata() {
-    // Large cooling tower data - placeholder values
-    RTX = [0, 50, 75, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1200, 1500, 2000, 2500];
-}
-
-function SRTdata() {
-    // Small cooling tower data - placeholder values
-    RTX = [0, 5, 7.5, 10, 12.5, 15, 17.5, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 120, 150, 200, 250];
-}
-
-function MRTdata() {
-    // Medium cooling tower data - placeholder values
-    RTX = [0, 50, 75, 100, 125, 150, 175, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1200, 1500, 2000, 2500];
-}
 
 function getMaxMin(Y) {
     // Placeholder function to get range max and min based on Y value
@@ -40,7 +23,6 @@ function getMaxMin(Y) {
     return [maxRange, minRange];
 }
 
-//... Find wet bulb line Find parameter1
 function YQ1(TwbC, TinCC){
 var Y;
 
@@ -316,6 +298,7 @@ function XQ2(Y, Range2){
 //}
      return X;
 }
+
 //... Find wet bulb line
 if (form) {
 form.addEventListener('submit', e => {
@@ -329,44 +312,41 @@ form.addEventListener('submit', e => {
   var TwoutC = parseFloat(TwoutCX.value.trim());
   var TwbC = parseFloat(TwbCX.value.trim());
 
-  // Convert water flow from m³/hr to LPM (liters per minute)
-  // 1 m³/hr = 1000 L/hr = 1000/60 LPM
-  var TotalQinLPM = Qwlpm * 1000 / 60;
+var TotalQinLPM = Qwlpm;
 
 var TinCC = parseFloat(TwinC);
 var ToutCC = parseFloat(TwoutC);
 var TwbC = parseFloat(TwbC);
 
-
   if ((!Qwlpm)||(!TwinC)||(!TwoutC)||(!TwbC)) {
-    alert('Please type in the data.');
+    alert('请输入有效数字');
     }
 
 var Appr =Math.round( (ToutCC -TwbC)*100)/100;
 var Range =Math.round( (TinCC - ToutCC)*100)/100;
 
   if(Qwlpm < 0.9){
- alNote = "Your water flow rate [" + Qwlpm + " m³/hr] is lower than the min. limit." ;
- alert(alNote );
+ alNote = "你的循环水量 [" + Qwlpm + " m³/hr] 过低, 请修正数据 (最低0.9 m³/hr)" ;
+ alert(alNote);
  document.getElementById('result').innerHTML = alNote;
     return;
 }
 
   if(Appr <= 0){
- alNote = "Your outlet temp. [" + ToutCC + "°C] can not be lower than wet bulb temp. " + TwbC + "°C" ;
- alert(alNote );
+ alNote = "你的出口温度 [" + ToutCC + "°C] 不能低于湿球温度 " + TwbC + "°C" ;
+ alert(alNote);
  document.getElementById('result').innerHTML = alNote;
     return;
 }
   if(Range <= 1){
- alNote = "Your hot water Temp. [" + TinCC + "°C] can not be lower than outlet temp. " + ToutCC + "°C or Range lower than 2°C";
- alert(alNote );
+ alNote = "你的热水温度 [" + TinCC + "°C] 不能低于出口温度 " + ToutCC + "°C 或者温差低于 2°C";
+ alert(alNote);
  document.getElementById('result').innerHTML = alNote;
     return;
 }
 
   if ((TinCC < 30.)||(TinCC > 57.)||(TwbC < 24)||(TwbC > 31)){
-   alNote = "Your Twb [" + TwbC + "°C] is out of the limit data. Please correct the data.";
+   alNote = "你的湿球温度 [" + TwbC + "°C] 超出数据范围。请修正数据。";
  alert(alNote );
  document.getElementById('result').innerHTML = alNote;
     return;
@@ -376,155 +356,12 @@ var THeatLoad =  Qwlpm*4.19*(TinCC - ToutCC)/3.6;
 // CT selection
 TwbC =Math.round(TwbC *100)/100;
 var Range2 = TinCC - ToutCC;
-//... Find wet bulb line Find parameter1 from function YQ1(TwbC, TinCC)
     Y = YQ1(TwbC, TinCC);
-
-//... Find wet bulb line from function
     X = XQ2(Y, Range2);
-//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-   var NOTEB = ""
-   var NOTEB2 = ""
-        var TotalRTi = [];
-            TotalRTi[0] = 0;
-        var SumTRT = 0;
-        var SumTinCi = 0;
-   var AvgTRT = 0;
-  if ((X < 0.)||(X > 18)){
-//Find Range max min from function RangeMaxMin(Y, TinCC)
- var RangeMaxMin = getMaxMin(Y);
-const RMax1 =  RangeMaxMin[0];
-const RMin1 =  RangeMaxMin[1];  
-      var NRange = RMax1 - RMin1;
-     ii = 0;
-     RCM = 1.;
-// for NRange
-   for (var i = 0 ; i <= (NRange); ++i) {
-var Rangei = RMin1 + i;
-var Rangeii =Math.abs(Range2 - Rangei);
-var TinCi = TinCC - Rangei;
-     if (Range2 < RMin1){TinCi = TinCC - Range2;
-                                         RCM = -1.;}
-    Yi = YQ1(TwbC, TinCi);
-    Xi = XQ2(Yi, Rangeii);
-
-//  if ((Xi > 0.)&&(Xi < 18))
-  if ((Xi > 0.)&&(Xi < 18)){
-//     alert( "TinCi = " + TinCi  +  "Rangeii = " + Rangeii + " x ="+Xi);
-     ii = ii+1;
-          X1 = Xi;
- Yi = -0.0000249715 * Math.pow(X1, 4) + 0.000978 * Math.pow(X1, 3) - 0.01135 * X1 * X1 - 0.64567 * X1 + 17.74358;
-          Yi = Yi*6/100;
-var TRTi = Math.round(TotalQinLPM/Yi);
-//     alert( "i = " +ii +"TinCi = " + TinCi  +  "ToutCi = " + (TinCi - Rangeii) + " Twbi ="+TwbC + " RTi = "+ TRTi);
-// NOTEB = NOTEB +"i = " +ii +"TinCi = " + TinCi  +  "ToutCi = " + (TinCi - Rangeii) + " Twbi ="+TwbC + " RTi = "+ TRTi+"<br>";
-// second CT size
-    Xii = XQ2(Y, Rangei);
-          X1 = Xii;
- Yii = -0.0000249715 * Math.pow(X1, 4) + 0.000978 * Math.pow(X1, 3) - 0.01135 * X1 * X1 - 0.64567 * X1 + 17.74358;
-          Yii = Yii*6/100;
-var TRTii = Math.round(TotalQinLPM/Yii);
-
-    TotalRTi[ii] = (TRTii +TRTi*RCM);
-    SumTRT = TotalRTi[ii] + SumTRT;
-    if (ToutCC < TinCi){SumTinCi = TinCi + SumTinCi;
-
-}                                           
-    else  {SumTinCi = TinCi + SumTinCi - Rangeii;
-
-}
-}
-//  if ((Xi > 0.)&&(Xi < 18))
-}
-// for NRange
-    AvgTRT = SumTRT/ii;
-   SumTinCi = SumTinCi/ii;
-   for (var i = 1 ; i <= (ii); ++i) {
-  ERR = (Math.abs(TotalRTi[i] - AvgTRT)/AvgTRT)*100.
-  ERR = Math.round(ERR*100.)/100.;
- AvgTRT = Math.round(AvgTRT*100.)/100.;
-
-//   alert( "i = " + i  +  "TotalRT " + TotalRTi[i]  + " Avg. RT" + AvgTRT + " ERR % ="+ ERR);
-// NOTEB = NOTEB +"TinCi = " + SumTinCi +"<br>";
-    if (ERR > 24.){
-      SumTRT = SumTRT - TotalRTi[i];
-      ii = ii -1; 
-    AvgTRT = SumTRT/ii;
-    AvgTRT = Math.round(AvgTRT*100.)/100.;
-                           }
-
-// reject if ERR >24%
-   }
-
-
-}
-
           X1 = X;
  Y = -0.0000249715 * Math.pow(X1, 4) + 0.000978 * Math.pow(X1, 3) - 0.01135 * X1 * X1 - 0.64567 * X1 + 17.74358;
           Y = Y*6/100;
 var TRT = Math.round(TotalQinLPM/Y);
- if (AvgTRT > 0) {TRT = AvgTRT;}
-  var TotalRT = TRT
-
-
-// CT selection
-    LRTdata();
-var RTMin = RTX[1];
- NEXT ="<a href=\CTSelectionChartL.html?TinCC="+TinCC+"&ToutCC="+ToutCC+"&TwbC="+TwbC+"&Qwlpm="+Qwlpm+"&TRT="+TRT+"&TinCi="+SumTinCi+"  target=_blank\>Print Chart</a>";
-    if (TotalQinLPM < 90){ SRTdata();
-                                               var RTMin = RTX[8];
-NEXT ="<a href=\CTSelectionChartS.html?TinCC="+TinCC+"&ToutCC="+ToutCC+"&TwbC="+TwbC+"&Qwlpm="+Qwlpm+"&TRT="+TRT+"&TinCi="+SumTinCi+"  target=_blank\>Print Chart</a>";
-                                             }
-    else if (TotalQinLPM < 2100){ MRTdata();
-                                               var RTMin = RTX[1];
-NEXT ="<a href=\CTSelectionChartM.html?TinCC="+TinCC+"&ToutCC="+ToutCC+"&TwbC="+TwbC+"&Qwlpm="+Qwlpm+"&TRT="+TRT+"&TinCi="+SumTinCi+"  target=_blank\>Print Chart</a>";
-                                             }
-
-var RTMax = RTX[20];
-var NRT = 1;
-     if  (TRT > RTMax)
-{
-var NRT = TRT/RTMax;
-}
-    else if (TRT < RTMin)
-{
-var NRT = TRT/RTMin;
-}
-    else
-{
-var NRT = 1;
-}
-NRT = Math.round(NRT);
-var TOTALRT = Math.round(TRT/NRT);
-var k=0;
-var RT=0;
-//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- for (var j=NRT; j <36; ++j) {
-
-    if (k>15){break;}
-TOTALRT = Math.round(TRT/j); 
-    if (TOTALRT+5<RTMin){break;}
-for (var i=1; i <23; ++i) {
- if (RTX[i] >=  TOTALRT ) {
-                   if (RT != RTX[i]) {
-    k = k+1;
-    RT=RTX[i];
-      if (k==1){
-    var selTOTALRT = Math.round(TRT/j);
-     NRT=j;
-                        }
-    if (TRT>Math.round(RT*j)){k = k -1;
-                                                    break;}
-NOTEB2 = NOTEB2 + k +". " + RT +" RT x " +j+" CELLS = "+ Math.round(RT*j) +" RT"+"<br>";
-//alert( k +". " + RT +" RT x " +j+" CELLS = "+ Math.round(RT*j) +" RT"+"<br>");
-    break;
-
-// if RT!=
-} else {
-//k=k-1;
-break;}
-}
-} 
-}
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -553,4 +390,4 @@ if (result) {
     console.error('Form element not found!');
 }
 
-}); // 结束 DOMContentLoaded 事件监听器
+}); 
